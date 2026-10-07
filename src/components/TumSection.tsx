@@ -141,7 +141,7 @@ export const TumSection: React.FC = () => {
             <br />
             meri comfort person ho,
             <br />
-            meri pagal si partner-in-crime ho,
+            meri pagal si partner ho,
             <br />
             aur woh insaan ho jisse main bina kisi particular reason ke bhi baat karna chahta hu.
           </p>
