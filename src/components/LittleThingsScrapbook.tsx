@@ -23,22 +23,22 @@ export const LittleThingsScrapbook: React.FC<LittleThingsScrapbookProps> = ({ on
   const [selectedItem, setSelectedItem] = useState<{ id: string; text: string; detail: string } | null>(null);
 
   return (
-    <section id="little-things" className="relative py-28 px-4 sm:px-6 max-w-6xl mx-auto overflow-hidden">
+    <section id="little-things" className="relative py-14 sm:py-28 px-3.5 sm:px-6 max-w-6xl mx-auto overflow-hidden">
       {/* Chapter header */}
-      <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
-        <span className="text-[11px] uppercase tracking-[0.25em] text-[#B86276] font-mono">
+      <div className="text-center max-w-xl mx-auto mb-10 sm:mb-16 space-y-2 sm:space-y-3">
+        <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-[#B86276] font-mono">
           Chapter IV · Notes
         </span>
-        <h2 className="font-serif text-3xl sm:text-5xl text-[#F9ECE9] tracking-tight">
+        <h2 className="font-serif text-2xl xs:text-3xl sm:text-5xl text-[#F9ECE9] tracking-tight">
           Tumhari woh chhoti chhoti cheezein…
         </h2>
-        <p className="font-handwriting text-lg sm:text-xl text-[#D89EA9]">
+        <p className="font-handwriting text-base xs:text-lg sm:text-xl text-[#D89EA9]">
           (the things that make me fall for you every single day)
         </p>
       </div>
 
       {/* Dark Romance Scrapbook Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 relative">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4.5 xs:gap-5 sm:gap-7 relative">
         {LITTLE_THINGS_DATA.map((item, index) => {
           const tapeVariants: Array<'crimson' | 'charcoal' | 'wine'> = ['crimson', 'wine', 'charcoal'];
           const tapeVariant = tapeVariants[index % 3];
@@ -46,39 +46,39 @@ export const LittleThingsScrapbook: React.FC<LittleThingsScrapbookProps> = ({ on
           return (
             <motion.div
               key={item.id}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.8, delay: index * 0.08 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.7, delay: (index % 4) * 0.08 }}
               onClick={() => setSelectedItem(item)}
-              className={`relative cursor-pointer group p-6 rounded-md bg-[#13080F] border border-[#3C1322] shadow-xl hover:shadow-[0_8px_30px_rgba(180,25,50,0.18)] hover:border-[#8E172E] transition-all duration-300 hover:-translate-y-1 ${item.rotation}`}
+              className={`relative cursor-pointer group p-4.5 xs:p-5 sm:p-6 rounded-md bg-[#13080F] border border-[#3C1322] shadow-xl hover:shadow-[0_8px_30px_rgba(180,25,50,0.18)] hover:border-[#8E172E] transition-all duration-300 active:scale-[0.98] sm:${item.rotation}`}
             >
               {/* Top Washi Tape or Paper Clip */}
               {index % 2 === 0 ? (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
-                  <WashiTape variant={tapeVariant} rotation={index % 4 === 0 ? '-rotate-2' : 'rotate-2'} />
+                  <WashiTape variant={tapeVariant} rotation={index % 4 === 0 ? '-rotate-1' : 'rotate-1'} />
                 </div>
               ) : (
-                <div className="absolute -top-4 right-6 z-20">
+                <div className="absolute -top-3 sm:-top-4 right-4 sm:right-6 z-20">
                   <PaperClipSvg />
                 </div>
               )}
 
               {/* Note Header */}
-              <div className="flex items-center justify-between border-b border-[#2C0E18] pb-3 mb-4">
-                <span className="font-mono text-[10px] text-[#A66373] uppercase tracking-wider">
+              <div className="flex items-center justify-between border-b border-[#2C0E18] pb-2 sm:pb-3 mb-3 sm:mb-4">
+                <span className="font-mono text-[9px] xs:text-[10px] text-[#A66373] uppercase tracking-wider">
                   No. 0{index + 1}
                 </span>
-                <HeartDoodle size={14} color="#C42340" />
+                <HeartDoodle size={13} color="#C42340" />
               </div>
 
               {/* Exact Note Text */}
-              <p className="font-serif text-xl sm:text-2xl text-[#F7E7E9] leading-snug group-hover:text-[#FFA3B5] transition-colors">
+              <p className="font-serif text-lg xs:text-xl sm:text-2xl text-[#F7E7E9] leading-snug group-hover:text-[#FFA3B5] transition-colors">
                 “{item.text}”
               </p>
 
               {/* Bottom scribble */}
-              <div className="mt-4 pt-3 flex justify-between items-center text-[11px] font-handwriting text-[#B87A8C]">
+              <div className="mt-3 sm:mt-4 pt-2.5 sm:pt-3 flex justify-between items-center text-[10px] xs:text-[11px] font-handwriting text-[#B87A8C]">
                 <span>tap to read note</span>
                 <span>♡</span>
               </div>
@@ -89,13 +89,13 @@ export const LittleThingsScrapbook: React.FC<LittleThingsScrapbookProps> = ({ on
         {/* Easter Egg Pressed Dark Rose */}
         <div
           onClick={() => onSecretFound('you found this ♡ (bina kisi wajah ke tum meri favourite ho)')}
-          className="absolute -bottom-4 right-4 sm:right-12 cursor-pointer p-2 hover:scale-110 transition-transform group"
+          className="col-span-full sm:col-span-1 sm:absolute sm:-bottom-4 sm:right-8 flex justify-center items-center py-2 cursor-pointer hover:scale-110 active:scale-95 transition-transform group"
           title="A pressed dark rose"
         >
-          <div className="relative">
-            <PressedFlowerSvg size={44} className="opacity-80 group-hover:opacity-100" />
-            <span className="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-6 -left-8 whitespace-nowrap bg-[#180A12] text-[11px] font-handwriting px-2 py-0.5 rounded-xs border border-[#4E1626] shadow-md text-[#E04B68]">
-              tap me ♡
+          <div className="relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#180A12]/80 border border-[#3E1424]">
+            <PressedFlowerSvg size={28} className="opacity-80 group-hover:opacity-100" />
+            <span className="text-[11px] font-handwriting text-[#E04B68]">
+              secret rose ♡
             </span>
           </div>
         </div>
@@ -106,21 +106,21 @@ export const LittleThingsScrapbook: React.FC<LittleThingsScrapbookProps> = ({ on
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 1, delay: 0.3 }}
-        className="mt-16 max-w-xl mx-auto bg-[#180A13] border border-[#481628] p-6 sm:p-8 rounded-lg text-center space-y-3 shadow-2xl relative"
+        transition={{ duration: 1, delay: 0.2 }}
+        className="mt-12 sm:mt-16 max-w-xl mx-auto bg-[#180A13] border border-[#481628] p-5 xs:p-6 sm:p-8 rounded-lg text-center space-y-2.5 sm:space-y-3 shadow-2xl relative"
       >
         <div className="absolute -top-3 left-1/2 -translate-x-1/2">
           <WashiTape variant="crimson" rotation="-rotate-1" />
         </div>
-        <p className="text-base sm:text-lg font-serif italic text-[#DFC2C9] leading-relaxed">
+        <p className="text-sm xs:text-base sm:text-lg font-serif italic text-[#DFC2C9] leading-relaxed">
           “shayad tumhe ye sab normal lagta ho,
           <br />
           but mujhe nahi.”
         </p>
-        <p className="font-handwriting text-2xl sm:text-3xl text-[#FF8DA5] pt-1">
+        <p className="font-handwriting text-xl xs:text-2xl sm:text-3xl text-[#FF8DA5] pt-1">
           I notice these things. And I love them. ♡
         </p>
-        <div className="text-right text-xs font-handwriting text-[#C46D80] pt-2">
+        <div className="text-right text-xs font-handwriting text-[#C46D80] pt-1 sm:pt-2">
           — Aditya
         </div>
       </motion.div>
@@ -133,40 +133,41 @@ export const LittleThingsScrapbook: React.FC<LittleThingsScrapbookProps> = ({ on
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedItem(null)}
-            className="fixed inset-0 z-50 bg-[#070305]/80 backdrop-blur-xs flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-[#070305]/85 backdrop-blur-xs flex items-center justify-center p-3.5"
           >
             <motion.div
               initial={{ scale: 0.95, y: 15 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.95, y: 15 }}
               onClick={(e) => e.stopPropagation()}
-              className="max-w-md w-full bg-[#140810] border border-[#4D1627] rounded-lg p-6 sm:p-8 shadow-2xl relative"
+              className="max-w-md w-full bg-[#140810] border border-[#4D1627] rounded-lg p-5 xs:p-6 sm:p-8 shadow-2xl relative"
             >
-              <div className="absolute -top-3 left-8">
+              <div className="absolute -top-3 left-6 sm:left-8">
                 <WashiTape variant="crimson" rotation="-rotate-1" />
               </div>
 
-              <div className="flex justify-between items-center border-b border-[#300E19] pb-3 mb-4">
-                <span className="font-mono text-xs uppercase tracking-widest text-[#B36879]">
+              <div className="flex justify-between items-center border-b border-[#300E19] pb-2.5 mb-3.5">
+                <span className="font-mono text-[10px] xs:text-xs uppercase tracking-widest text-[#B36879]">
                   A Little Thing
                 </span>
                 <button
                   onClick={() => setSelectedItem(null)}
-                  className="cursor-pointer text-xs font-mono uppercase text-[#9C6070] hover:text-[#FFCED8]"
+                  className="cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-end text-xs font-mono uppercase text-[#9C6070] hover:text-[#FFCED8]"
+                  aria-label="Close modal"
                 >
                   [close]
                 </button>
               </div>
 
-              <h3 className="font-serif text-2xl text-[#FBEBED] mb-3">
+              <h3 className="font-serif text-xl xs:text-2xl text-[#FBEBED] mb-2.5">
                 “{selectedItem.text}”
               </h3>
 
-              <p className="font-handwriting text-xl text-[#F2B6C3] leading-relaxed mb-6">
+              <p className="font-handwriting text-lg xs:text-xl text-[#F2B6C3] leading-relaxed mb-5">
                 {selectedItem.detail}
               </p>
 
-              <div className="text-right border-t border-dashed border-[#3D1422] pt-3 text-xs font-handwriting text-[#E0657C]">
+              <div className="text-right border-t border-dashed border-[#3D1422] pt-2.5 text-xs font-handwriting text-[#E0657C]">
                 — kept in my heart by Aditya ♡
               </div>
             </motion.div>

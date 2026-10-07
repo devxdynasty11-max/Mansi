@@ -15,8 +15,15 @@ export default function App() {
   const [hasOpenedEnvelope, setHasOpenedEnvelope] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>('envelope');
   const [secretMessage, setSecretMessage] = useState<string | null>(null);
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
 
   const mainContentRef = useRef<HTMLDivElement>(null);
+
+  const handleToggleTheme = () => {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(nextTheme);
+    document.documentElement.setAttribute('data-theme', nextTheme);
+  };
 
   const handleOpenEnvelope = () => {
     setHasOpenedEnvelope(true);
@@ -80,12 +87,17 @@ export default function App() {
   }, [hasOpenedEnvelope]);
 
   return (
-    <div className="min-h-screen bg-[#0A0407] text-[#F3EAE6] selection:bg-[#78182A] selection:text-[#FFF5F7] relative font-sans">
+    <div className="min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-[#0A0407] text-[#F3EAE6] selection:bg-[#78182A] selection:text-[#FFF5F7] relative font-sans">
       {/* Top Floating Dark Romance Navigation */}
-      <HeaderNav currentSection={activeSection} onNavigate={handleNavigate} />
+      <HeaderNav
+        currentSection={activeSection}
+        onNavigate={handleNavigate}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
+      />
 
       {/* Opening: The Envelope */}
-      <div id="envelope">
+      <div id="envelope" className="w-full max-w-[100vw] overflow-x-hidden">
         <EnvelopeIntro onOpen={handleOpenEnvelope} />
       </div>
 

@@ -25,81 +25,136 @@
   font-family: var(--font-sans);
 }
 
-/* Pure Dark Romance Paper & Canvas */
-.paper-texture {
-  background-color: #0A0407;
-  background-image: 
-    radial-gradient(rgba(140, 30, 55, 0.12) 1px, transparent 1px),
-    radial-gradient(rgba(30, 15, 22, 0.9) 1px, #0A0407 1px);
-  background-size: 32px 32px;
-  background-position: 0 0, 16px 16px;
+/* =========================================
+   THEME PALETTES: DARK ROMANCE & LIGHT ROMANCE
+   ========================================= */
+
+/* Dark Romance (Default) */
+:root, [data-theme="dark"] {
+  --bg-page: #0A0407;
+  --bg-canvas: #0A0407;
+  --bg-card: #13080F;
+  --bg-card-inner: #1C0B15;
+  --bg-bubble-her: #3A0D18;
+  --bg-bubble-his: #180913;
+  --border-subtle: #2C0E18;
+  --border-card: #3E1423;
+  --border-bubble: #6B182B;
+  --text-primary: #F7EDE9;
+  --text-secondary: #DFC5CC;
+  --text-muted: #A66072;
+  --text-highlight: #FFB6C6;
+  --accent-crimson: #C42340;
+  --accent-btn: #780F22;
+  --shadow-glow: rgba(140, 30, 55, 0.2);
+  --washi-bg: rgba(90, 14, 27, 0.85);
+  --washi-border: rgba(160, 40, 65, 0.6);
+  --washi-text: #D84560;
+  --dot-color: rgba(140, 30, 55, 0.12);
 }
 
-/* Dark Vintage Deckled Paper / Parchment */
+/* Light Romance */
+[data-theme="light"] {
+  --bg-page: #FAF5F0;
+  --bg-canvas: #FAF5F0;
+  --bg-card: #FFFDFB;
+  --bg-card-inner: #F6EDE5;
+  --bg-bubble-her: #FBE5E8;
+  --bg-bubble-his: #EFE4DC;
+  --border-subtle: #E8D5CE;
+  --border-card: #DFC5BB;
+  --border-bubble: #E8B6C0;
+  --text-primary: #2C1B22;
+  --text-secondary: #583F47;
+  --text-muted: #8E6572;
+  --text-highlight: #9E1B32;
+  --accent-crimson: #9E1B32;
+  --accent-btn: #9E1B32;
+  --shadow-glow: rgba(220, 160, 175, 0.25);
+  --washi-bg: rgba(235, 205, 212, 0.88);
+  --washi-border: rgba(210, 165, 178, 0.7);
+  --washi-text: #8E3048;
+  --dot-color: rgba(180, 140, 150, 0.25);
+}
+
+/* Paper noise texture with theme variables */
+.paper-texture {
+  background-color: var(--bg-canvas);
+  background-image: 
+    radial-gradient(var(--dot-color) 1px, transparent 1px),
+    radial-gradient(var(--dot-color) 1px, var(--bg-canvas) 1px);
+  background-size: 28px 28px;
+  background-position: 0 0, 14px 14px;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Vintage Deckled Paper / Cards */
 .deckled-paper {
-  background: #13090F;
+  background: var(--bg-card);
   box-shadow: 
-    0 2px 8px rgba(0, 0, 0, 0.6),
-    0 12px 36px rgba(100, 15, 30, 0.15),
-    inset 0 0 50px rgba(50, 8, 20, 0.35);
-  border: 1px solid rgba(110, 25, 45, 0.35);
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    0 12px 36px var(--shadow-glow),
+    inset 0 0 50px rgba(70, 10, 25, 0.12);
+  border: 1px solid var(--border-card);
+  transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .dark-card {
-  background: #11080D;
-  border: 1px solid rgba(120, 25, 45, 0.3);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  transition: background 0.4s ease, border-color 0.4s ease;
 }
 
-/* Dark Romance Washi Tape */
+/* Washi Tape with Theme adaptation */
 .washi-tape {
-  background: rgba(85, 20, 35, 0.55);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  background: var(--washi-bg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(2px);
-  border-left: 2px dashed rgba(160, 40, 65, 0.5);
-  border-right: 2px dashed rgba(160, 40, 65, 0.5);
+  border-left: 2px dashed var(--washi-border);
+  border-right: 2px dashed var(--washi-border);
 }
 
 .washi-tape-crimson {
-  background: rgba(130, 22, 40, 0.65);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  background: var(--washi-bg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(2px);
-  border-left: 2px dashed rgba(200, 50, 75, 0.5);
-  border-right: 2px dashed rgba(200, 50, 75, 0.5);
+  border-left: 2px dashed var(--washi-border);
+  border-right: 2px dashed var(--washi-border);
 }
 
 .washi-tape-charcoal {
-  background: rgba(35, 25, 30, 0.75);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  background: var(--washi-bg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(2px);
-  border-left: 2px dashed rgba(90, 60, 70, 0.5);
-  border-right: 2px dashed rgba(90, 60, 70, 0.5);
+  border-left: 2px dashed var(--washi-border);
+  border-right: 2px dashed var(--washi-border);
 }
 
-/* Smooth custom scrollbar for dark romance */
+/* Smooth custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #0A0407;
+  background: var(--bg-page);
 }
 ::-webkit-scrollbar-thumb {
-  background: #4A1220;
+  background: var(--border-card);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #7A1D32;
+  background: var(--accent-crimson);
 }
 
 /* Candlelight / Ember pulse animation */
 @keyframes candleFlicker {
   0%, 100% {
     opacity: 0.9;
-    filter: drop-shadow(0 0 12px rgba(230, 160, 90, 0.35));
+    filter: drop-shadow(0 0 10px rgba(230, 160, 90, 0.35));
   }
   50% {
     opacity: 0.75;
-    filter: drop-shadow(0 0 18px rgba(210, 80, 70, 0.45));
+    filter: drop-shadow(0 0 16px rgba(210, 80, 70, 0.45));
   }
 }
 
@@ -127,4 +182,23 @@
 
 .animate-petal {
   animation: floatRosePetal 8s ease-in-out infinite;
+}
+
+/* Mobile viewport protection */
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Hide scrollbar for clean touch swipe tabs */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

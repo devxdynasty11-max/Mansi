@@ -83,57 +83,57 @@ export const ChatWallScrapbook: React.FC = () => {
   const [activeChat, setActiveChat] = useState<ChatItem | null>(null);
 
   return (
-    <section id="chats" className="relative py-28 px-4 sm:px-6 max-w-6xl mx-auto overflow-hidden">
+    <section id="chats" className="relative py-14 sm:py-28 px-3.5 sm:px-6 max-w-6xl mx-auto overflow-hidden">
       {/* Chapter Heading */}
-      <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-        <span className="text-[11px] uppercase tracking-[0.25em] text-[#B86276] font-mono">
+      <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16 space-y-2 sm:space-y-3">
+        <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-[#B86276] font-mono">
           Chapter V · Screenshots
         </span>
-        <h2 className="font-serif text-3xl sm:text-5xl text-[#F9ECE9] tracking-tight">
+        <h2 className="font-serif text-2xl xs:text-3xl sm:text-5xl text-[#F9ECE9] tracking-tight">
           Some messages I never want to forget.
         </h2>
-        <p className="font-handwriting text-xl sm:text-2xl text-[#E892A4]">
+        <p className="font-handwriting text-lg xs:text-xl sm:text-2xl text-[#E892A4]">
           Normal chats thi tumhare liye shayad… mere liye nahi. ♡
         </p>
       </div>
 
       {/* Grid of Scrapbook Chat Artifacts */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8 items-start">
         {CHAT_DATA.map((chat, idx) => (
           <motion.div
             key={chat.id}
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.7, delay: idx * 0.1 }}
+            transition={{ duration: 0.7, delay: (idx % 3) * 0.1 }}
             onClick={() => setActiveChat(chat)}
-            className={`relative cursor-pointer group bg-[#13080F] p-5 rounded-md border border-[#3E1423] shadow-xl hover:shadow-[0_8px_30px_rgba(180,25,50,0.2)] hover:border-[#8E172E] transition-all duration-300 hover:-translate-y-1 ${chat.rotation}`}
+            className={`relative cursor-pointer group bg-[#13080F] p-4 xs:p-5 rounded-md border border-[#3E1423] shadow-xl hover:shadow-[0_8px_30px_rgba(180,25,50,0.2)] hover:border-[#8E172E] transition-all duration-300 active:scale-[0.98] sm:${chat.rotation}`}
           >
             {/* Washi Tape */}
-            <div className="absolute -top-3 left-8 z-20">
+            <div className="absolute -top-3 left-6 sm:left-8 z-20">
               <WashiTape
                 variant={idx % 2 === 0 ? 'crimson' : 'wine'}
-                rotation={idx % 2 === 0 ? '-rotate-3' : 'rotate-2'}
+                rotation={idx % 2 === 0 ? '-rotate-2' : 'rotate-1'}
               />
             </div>
 
             {/* Header Badge */}
-            <div className="flex items-center justify-between border-b border-[#2C0E18] pb-3 mb-3">
-              <span className="font-mono text-[10px] text-[#A66072] uppercase flex items-center gap-1.5">
+            <div className="flex items-center justify-between border-b border-[#2C0E18] pb-2 sm:pb-3 mb-2.5 sm:mb-3">
+              <span className="font-mono text-[9px] xs:text-[10px] text-[#A66072] uppercase flex items-center gap-1.5">
                 <BookmarkCheck className="w-3 h-3 text-[#C42340]" />
                 {chat.badge}
               </span>
-              <span className="font-handwriting text-xs text-[#E0657C]">kept close</span>
+              <span className="font-handwriting text-[11px] xs:text-xs text-[#E0657C]">kept close</span>
             </div>
 
             {/* Exact Caption */}
-            <h3 className="font-handwriting text-xl text-[#FFB6C6] mb-3 leading-snug">
+            <h3 className="font-handwriting text-lg xs:text-xl text-[#FFB6C6] mb-2 sm:mb-3 leading-snug">
               {chat.caption}
             </h3>
 
             {/* Dark Romance Chat Bubble Preview */}
-            <div className="bg-[#1A0A14] p-3.5 rounded-sm border border-[#3A1221] space-y-2.5 my-2">
-              <div className="flex items-center justify-between text-[9px] font-mono text-[#8C5262] pb-1 border-b border-[#2D0D19]">
+            <div className="bg-[#1A0A14] p-3 sm:p-3.5 rounded-sm border border-[#3A1221] space-y-2 sm:space-y-2.5 my-2">
+              <div className="flex items-center justify-between text-[8px] xs:text-[9px] font-mono text-[#8C5262] pb-1 border-b border-[#2D0D19]">
                 <span>PRIVATE WHATSAPP THREAD</span>
                 <span className="tracking-widest">● ● ●</span>
               </div>
@@ -145,11 +145,11 @@ export const ChatWallScrapbook: React.FC = () => {
                     m.sender === 'Mansii' ? 'items-start' : 'items-end'
                   }`}
                 >
-                  <span className="text-[9px] font-mono text-[#A86E7E] mb-0.5">
+                  <span className="text-[8px] xs:text-[9px] font-mono text-[#A86E7E] mb-0.5">
                     {m.sender}
                   </span>
                   <div
-                    className={`max-w-[92%] text-xs px-2.5 py-1.5 rounded-md leading-relaxed ${
+                    className={`max-w-[94%] xs:max-w-[90%] text-xs px-2.5 py-1.5 rounded-md leading-relaxed ${
                       m.sender === 'Mansii'
                         ? m.isHighlighted
                           ? 'bg-[#3A0D18] text-[#FFE8ED] border border-[#6B182B] font-medium shadow-xs'
@@ -164,11 +164,11 @@ export const ChatWallScrapbook: React.FC = () => {
             </div>
 
             {/* Aditya's confession snippet */}
-            <div className="mt-4 pt-3 border-t border-dashed border-[#2C0E18] flex items-center justify-between text-xs text-[#A86E7E]">
-              <span className="font-handwriting text-sm text-[#E0657C] flex items-center gap-1">
+            <div className="mt-3 sm:mt-4 pt-2.5 sm:pt-3 border-t border-dashed border-[#2C0E18] flex items-center justify-between text-xs text-[#A86E7E]">
+              <span className="font-handwriting text-xs xs:text-sm text-[#E0657C] flex items-center gap-1">
                 <MessageSquareHeart className="w-3.5 h-3.5" /> Aditya's memory
               </span>
-              <HeartDoodle size={14} color="#C42340" />
+              <HeartDoodle size={13} color="#C42340" />
             </div>
           </motion.div>
         ))}
@@ -182,34 +182,35 @@ export const ChatWallScrapbook: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setActiveChat(null)}
-            className="fixed inset-0 z-50 bg-[#070305]/85 backdrop-blur-xs flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-[#070305]/85 backdrop-blur-xs flex items-center justify-center p-3.5"
           >
             <motion.div
               initial={{ scale: 0.95, y: 15 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.95, y: 15 }}
               onClick={(e) => e.stopPropagation()}
-              className="max-w-lg w-full bg-[#140810] rounded-lg border border-[#481628] p-6 sm:p-8 shadow-2xl relative"
+              className="max-w-lg w-full bg-[#140810] rounded-lg border border-[#481628] p-4.5 xs:p-6 sm:p-8 shadow-2xl relative max-h-[88vh] flex flex-col"
             >
-              <div className="flex justify-between items-center pb-3 border-b border-[#2E0E1B]">
+              <div className="flex justify-between items-center pb-2.5 border-b border-[#2E0E1B] shrink-0">
                 <div>
-                  <span className="font-mono text-[10px] uppercase text-[#A66072]">
+                  <span className="font-mono text-[9px] xs:text-[10px] uppercase text-[#A66072]">
                     Artifact · {activeChat.badge}
                   </span>
-                  <h4 className="font-handwriting text-2xl text-[#FFB6C6] mt-0.5">
+                  <h4 className="font-handwriting text-xl xs:text-2xl text-[#FFB6C6] mt-0.5">
                     {activeChat.caption}
                   </h4>
                 </div>
                 <button
                   onClick={() => setActiveChat(null)}
-                  className="cursor-pointer text-xs font-mono uppercase text-[#A86E7E] hover:text-[#FFCED8]"
+                  className="cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-end text-xs font-mono uppercase text-[#A86E7E] hover:text-[#FFCED8]"
+                  aria-label="Close modal"
                 >
                   [close]
                 </button>
               </div>
 
               {/* Chat View */}
-              <div className="my-5 bg-[#1C0B15] p-4 rounded-md border border-[#3E1423] space-y-3 max-h-60 overflow-y-auto">
+              <div className="my-3 sm:my-5 bg-[#1C0B15] p-3 xs:p-4 rounded-md border border-[#3E1423] space-y-2.5 sm:space-y-3 max-h-[46vh] sm:max-h-60 overflow-y-auto overscroll-contain">
                 {activeChat.dialogue.map((m, mIdx) => (
                   <div
                     key={mIdx}
@@ -217,11 +218,11 @@ export const ChatWallScrapbook: React.FC = () => {
                       m.sender === 'Mansii' ? 'items-start' : 'items-end'
                     }`}
                   >
-                    <span className="text-[10px] font-mono text-[#A86E7E] mb-0.5">
+                    <span className="text-[9px] xs:text-[10px] font-mono text-[#A86E7E] mb-0.5">
                       {m.sender}
                     </span>
                     <div
-                      className={`max-w-[88%] text-xs sm:text-sm px-3 py-2 rounded-md leading-relaxed ${
+                      className={`max-w-[90%] text-xs xs:text-sm px-2.5 xs:px-3 py-1.5 xs:py-2 rounded-md leading-relaxed ${
                         m.sender === 'Mansii'
                           ? m.isHighlighted
                             ? 'bg-[#3A0D18] text-[#FFE8ED] border border-[#6B182B] font-medium shadow-xs'
@@ -236,14 +237,14 @@ export const ChatWallScrapbook: React.FC = () => {
               </div>
 
               {/* Aditya's note */}
-              <div className="bg-[#1A0A13] p-4 rounded-md border border-[#381120] relative">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-[#A86E7E]">
+              <div className="bg-[#1A0A13] p-3 xs:p-4 rounded-md border border-[#381120] relative shrink-0">
+                <span className="font-mono text-[9px] xs:text-[10px] uppercase tracking-wider text-[#A86E7E]">
                   Why I keep this close:
                 </span>
-                <p className="font-handwriting text-lg text-[#F2C2CD] mt-1.5 leading-relaxed">
+                <p className="font-handwriting text-base xs:text-lg text-[#F2C2CD] mt-1 leading-relaxed">
                   “{activeChat.reflection}”
                 </p>
-                <div className="text-right text-xs font-handwriting text-[#E0657C] mt-2">
+                <div className="text-right text-xs font-handwriting text-[#E0657C] mt-1.5">
                   — Aditya ♡
                 </div>
               </div>

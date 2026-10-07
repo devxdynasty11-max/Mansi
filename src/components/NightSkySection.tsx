@@ -11,7 +11,7 @@ export const NightSkySection: React.FC<NightSkySectionProps> = ({ onSecretFound 
   return (
     <section
       id="night-sky"
-      className="relative min-h-screen py-32 px-4 sm:px-6 bg-[#070305] text-[#F0D5DC] overflow-hidden select-none"
+      className="relative min-h-screen py-14 sm:py-32 px-3.5 sm:px-6 bg-[#070305] text-[#F0D5DC] overflow-hidden select-none"
     >
       {/* Background Starry Sky Image with measured deep crimson/black contrast scrim */}
       <div className="absolute inset-0 pointer-events-none opacity-30">
@@ -26,15 +26,15 @@ export const NightSkySection: React.FC<NightSkySectionProps> = ({ onSecretFound 
 
       {/* Twinkling ambient stars & crimson embers */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(40)].map((_, i) => (
+        {[...Array(35)].map((_, i) => (
           <motion.div
             key={`star-${i}`}
             className="absolute rounded-full bg-gradient-to-tr from-[#FFD4DF] to-[#FF8DA5]"
             style={{
               width: `${(i % 3) + 1.5}px`,
               height: `${(i % 3) + 1.5}px`,
-              top: `${(i * 17) % 96}%`,
-              left: `${(i * 23) % 96}%`,
+              top: `${(i * 17) % 90 + 5}%`,
+              left: `${(i * 23) % 88 + 6}%`,
             }}
             animate={{
               opacity: [0.2, 0.9, 0.2],
@@ -53,29 +53,30 @@ export const NightSkySection: React.FC<NightSkySectionProps> = ({ onSecretFound 
       {/* Secret Twinkling Easter Egg Star */}
       <button
         onClick={() => onSecretFound('still thinking about you, Mansii. (hamesha ♡)')}
-        className="absolute top-28 right-16 sm:right-32 cursor-pointer z-30 group p-2 focus:outline-hidden"
+        className="absolute top-18 sm:top-28 right-4 sm:right-32 cursor-pointer z-30 group min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-hidden"
         title="A secret twinkle"
+        aria-label="Secret twinkling star"
       >
         <Star className="w-4 h-4 text-[#FF8DA5] animate-pulse group-hover:scale-125 transition-transform" />
       </button>
 
       {/* Main Midnight Narrative */}
-      <div className="relative z-10 max-w-3xl mx-auto space-y-24">
+      <div className="relative z-10 max-w-3xl mx-auto space-y-12 sm:space-y-24">
         {/* Soft Moon and Chapter Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1.2 }}
-          className="text-center flex flex-col items-center space-y-3"
+          className="text-center flex flex-col items-center space-y-2 sm:space-y-3"
         >
-          <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-[#3D0A14] to-[#781427] shadow-[0_0_40px_rgba(180,25,50,0.4)] border border-[#9E2036] flex items-center justify-center mb-2">
-            <Moon className="w-8 h-8 text-[#FFE5EC] opacity-90" />
+          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-[#3D0A14] to-[#781427] shadow-[0_0_40px_rgba(180,25,50,0.4)] border border-[#9E2036] flex items-center justify-center mb-1 sm:mb-2">
+            <Moon className="w-7 h-7 sm:w-8 sm:h-8 text-[#FFE5EC] opacity-90" />
           </div>
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-[#B86276]">
+          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.3em] text-[#B86276]">
             Chapter VIII · Midnight
           </span>
-          <h2 className="font-serif text-3xl sm:text-5xl text-[#F9ECE9] tracking-tight font-normal">
+          <h2 className="font-serif text-2xl xs:text-3xl sm:text-5xl text-[#F9ECE9] tracking-tight font-normal">
             Somewhere between all those conversations…
           </h2>
         </motion.div>
@@ -86,41 +87,41 @@ export const NightSkySection: React.FC<NightSkySectionProps> = ({ onSecretFound 
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="bg-[#12070E] p-8 sm:p-12 rounded-lg border border-[#3E1423] shadow-2xl text-center space-y-6 max-w-2xl mx-auto relative dark-card"
+          className="bg-[#12070E] p-4.5 xs:p-6 sm:p-12 rounded-lg border border-[#3E1423] shadow-2xl text-center space-y-4 sm:space-y-6 max-w-2xl mx-auto relative dark-card"
         >
           <div className="absolute -top-3 left-1/2 -translate-x-1/2">
             <WashiTape variant="crimson" rotation="-rotate-1" />
           </div>
 
-          <p className="font-serif text-xl sm:text-2xl text-[#FFB6C6] italic">
+          <p className="font-serif text-lg xs:text-xl sm:text-2xl text-[#FFB6C6] italic">
             pata hi nahi chala kab tum itni important ho gayi.
           </p>
 
-          <div className="space-y-2 text-base sm:text-lg font-serif text-[#DFC8CF] py-2">
+          <div className="space-y-1.5 sm:space-y-2 text-sm xs:text-base sm:text-lg font-serif text-[#DFC8CF] py-1 sm:py-2">
             <p>Pehle bas baat hoti thi.</p>
             <p>Phir tumhari messages ka wait hone laga.</p>
             <p>Phir tumhari fikr hone lagi.</p>
             <p>Phir tumhari khushi matter karne lagi.</p>
           </div>
 
-          <div className="py-2 border-y border-[#330F1C] my-2">
-            <p className="font-serif text-2xl sm:text-3xl text-[#FFEBF0] font-medium">
+          <div className="py-2 border-y border-[#330F1C] my-1 sm:my-2">
+            <p className="font-serif text-xl xs:text-2xl sm:text-3xl text-[#FFEBF0] font-medium">
               Aur ab…
             </p>
-            <p className="font-serif text-lg sm:text-xl text-[#F5C2CD] mt-2">
+            <p className="font-serif text-base xs:text-lg sm:text-xl text-[#F5C2CD] mt-1 sm:mt-2">
               tum meri life ka woh part ho jiske bina sab thoda incomplete sa lagta hai.
             </p>
           </div>
 
-          <div className="space-y-3 text-base sm:text-lg font-serif text-[#D4BAC4]">
+          <div className="space-y-2 sm:space-y-3 text-sm xs:text-base sm:text-lg font-serif text-[#D4BAC4]">
             <p className="italic">
               Funny thing is, shayad tumhe ye sab already pata hai.
             </p>
             <p>But I still wanted to say it.</p>
-            <p className="font-serif text-xl text-[#FF9EAF] font-medium">
+            <p className="font-serif text-lg xs:text-xl text-[#FF9EAF] font-medium">
               Again.
             </p>
-            <p className="font-handwriting text-2xl sm:text-3xl text-[#FF8DA5] pt-2">
+            <p className="font-handwriting text-xl xs:text-2xl sm:text-3xl text-[#FF8DA5] pt-1 sm:pt-2">
               Because tumhe pyaar karna toh achha lagta hi hai,
               <br />
               tumhe batana bhi achha lagta hai. ♡
@@ -134,27 +135,27 @@ export const NightSkySection: React.FC<NightSkySectionProps> = ({ onSecretFound 
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="bg-[#140810] p-8 sm:p-12 rounded-lg border border-[#481628] shadow-2xl text-center space-y-6 max-w-2xl mx-auto relative dark-card"
+          className="bg-[#140810] p-4.5 xs:p-6 sm:p-12 rounded-lg border border-[#481628] shadow-2xl text-center space-y-4 sm:space-y-6 max-w-2xl mx-auto relative dark-card"
         >
           <div className="absolute -top-3 left-1/2 -translate-x-1/2">
             <WashiTape variant="wine" rotation="rotate-2" />
           </div>
 
-          <div className="border-b border-[#2E0E1B] pb-3 mb-2">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-[#B86276]">
+          <div className="border-b border-[#2E0E1B] pb-2.5 sm:pb-3 mb-1 sm:mb-2">
+            <span className="font-mono text-[9px] xs:text-[10px] uppercase tracking-widest text-[#B86276]">
               A Small Future Note
             </span>
-            <h3 className="font-serif text-2xl sm:text-3xl text-[#F9ECE9] mt-1 font-normal">
+            <h3 className="font-serif text-xl xs:text-2xl sm:text-3xl text-[#F9ECE9] mt-0.5 sm:mt-1 font-normal">
               Future ke liye ek chhoti si baat…
             </h3>
           </div>
 
-          <div className="space-y-4 text-base sm:text-lg font-serif text-[#DFC8CF] leading-relaxed">
+          <div className="space-y-3 sm:space-y-4 text-sm xs:text-base sm:text-lg font-serif text-[#DFC8CF] leading-relaxed">
             <p>
               Main koi perfect future predict nahi kar raha.
             </p>
 
-            <p className="text-lg sm:text-xl text-[#FFB6C6] italic">
+            <p className="text-base xs:text-lg sm:text-xl text-[#FFB6C6] italic">
               Bas itna chahta hu ki aage bhi hum aise hi stupid si baaton pe has sakein,
               <br />
               ek dusre ko tang kar sakein,
@@ -166,15 +167,15 @@ export const NightSkySection: React.FC<NightSkySectionProps> = ({ onSecretFound 
               aur phir thodi der baad normal ho jaayein. 😭
             </p>
 
-            <p className="pt-2 text-[#E8CCD4]">
+            <p className="pt-1 sm:pt-2 text-[#E8CCD4]">
               Aur haan…
             </p>
 
-            <p className="font-serif text-xl sm:text-2xl text-[#FFE5EC] font-medium">
+            <p className="font-serif text-lg xs:text-xl sm:text-2xl text-[#FFE5EC] font-medium">
               future mein bhi tumhe tang karne ka full plan hai.
             </p>
 
-            <p className="font-handwriting text-2xl sm:text-3xl text-[#FF859F] pt-2">
+            <p className="font-handwriting text-xl xs:text-2xl sm:text-3xl text-[#FF859F] pt-1.5 sm:pt-2">
               So unfortunately, tum stuck ho mere saath. 🤭❤️
             </p>
 

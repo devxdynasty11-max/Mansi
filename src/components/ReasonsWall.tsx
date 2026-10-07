@@ -29,24 +29,24 @@ export const ReasonsWall: React.FC = () => {
   };
 
   return (
-    <section id="reasons" className="relative py-28 px-4 sm:px-6 max-w-5xl mx-auto overflow-hidden">
+    <section id="reasons" className="relative py-14 sm:py-28 px-3.5 sm:px-6 max-w-5xl mx-auto overflow-hidden">
       {/* Chapter header */}
-      <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-        <span className="text-[11px] uppercase tracking-[0.25em] text-[#B86276] font-mono">
+      <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 space-y-2 sm:space-y-3">
+        <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-[#B86276] font-mono">
           Chapter VI · 100 Little Things
         </span>
-        <h2 className="font-serif text-3xl sm:text-5xl text-[#F9ECE9] tracking-tight">
+        <h2 className="font-serif text-2xl xs:text-3xl sm:text-5xl text-[#F9ECE9] tracking-tight">
           100 reasons why I love having you in my life ♡
         </h2>
-        <p className="font-handwriting text-lg sm:text-xl text-[#D89EA9]">
+        <p className="font-handwriting text-base xs:text-lg sm:text-xl text-[#D89EA9]">
           (har ek reason sach hai, no exaggeration)
         </p>
       </div>
 
       {/* Control bar: Filters & View mode */}
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-8 bg-[#140810] p-2.5 rounded-lg border border-[#3E1423]">
-        {/* Category Tabs */}
-        <div className="flex items-center gap-1 overflow-x-auto text-xs font-mono py-1">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-6 sm:mb-8 bg-[#140810] p-2 xs:p-2.5 rounded-lg border border-[#3E1423]">
+        {/* Category Tabs (Smooth touch scrolling on mobile) */}
+        <div className="flex items-center gap-1.5 overflow-x-auto text-[11px] xs:text-xs font-mono py-0.5 touch-pan-x w-full sm:w-auto scrollbar-none">
           {['all', 'heartfelt', 'tender', 'little-things', 'funny'].map((tag) => (
             <button
               key={tag}
@@ -54,7 +54,7 @@ export const ReasonsWall: React.FC = () => {
                 setSelectedTag(tag);
                 setCurrentIndex(0);
               }}
-              className={`px-3 py-1.5 rounded-md uppercase tracking-wider transition-colors cursor-pointer whitespace-nowrap ${
+              className={`px-2.5 xs:px-3 py-1.5 min-h-[34px] rounded-md uppercase tracking-wider transition-colors cursor-pointer whitespace-nowrap shrink-0 active:scale-95 ${
                 selectedTag === tag
                   ? 'bg-[#8E142B] text-[#FFF0F3] font-semibold shadow-xs'
                   : 'text-[#B88796] hover:text-[#FFCED8] hover:bg-[#200B17]'
@@ -66,10 +66,10 @@ export const ReasonsWall: React.FC = () => {
         </div>
 
         {/* View mode toggle */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-end">
           <button
             onClick={() => setViewMode(viewMode === 'stack' ? 'grid' : 'stack')}
-            className="flex items-center gap-1.5 text-xs font-mono px-3.5 py-1.5 rounded-md bg-[#1C0B15] border border-[#481628] text-[#E0B2BE] hover:bg-[#2A0F21] transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 text-xs font-mono px-3 py-1.5 min-h-[34px] rounded-md bg-[#1C0B15] border border-[#481628] text-[#E0B2BE] hover:bg-[#2A0F21] active:scale-95 transition-colors cursor-pointer shrink-0"
           >
             {viewMode === 'stack' ? (
               <>
@@ -88,10 +88,10 @@ export const ReasonsWall: React.FC = () => {
       {viewMode === 'stack' ? (
         <div className="flex flex-col items-center">
           {/* Card Stack Container */}
-          <div className="relative w-full max-w-lg h-72 sm:h-80 flex items-center justify-center">
+          <div className="relative w-full max-w-lg min-h-[280px] xs:min-h-[300px] sm:min-h-[330px] flex items-center justify-center">
             {/* Background layered faux cards */}
-            <div className="absolute w-11/12 h-64 bg-[#180A13] rounded-lg border border-[#3A1221] -rotate-3 translate-y-3 pointer-events-none shadow-md opacity-70" />
-            <div className="absolute w-11/12 h-64 bg-[#1E0C18] rounded-lg border border-[#451629] rotate-2 translate-y-1.5 pointer-events-none shadow-md opacity-80" />
+            <div className="absolute inset-x-3 inset-y-2 bg-[#180A13] rounded-lg border border-[#3A1221] -rotate-2 sm:-rotate-3 translate-y-2 sm:translate-y-3 pointer-events-none shadow-md opacity-70" />
+            <div className="absolute inset-x-2 inset-y-1 bg-[#1E0C18] rounded-lg border border-[#451629] rotate-1 sm:rotate-2 translate-y-1 sm:translate-y-1.5 pointer-events-none shadow-md opacity-80" />
 
             {/* Top Interactive Card */}
             <AnimatePresence mode="wait">
@@ -102,7 +102,7 @@ export const ReasonsWall: React.FC = () => {
                 exit={{ opacity: 0, scale: 0.94, y: -20, rotate: 2 }}
                 transition={{ duration: 0.35, ease: 'easeOut' }}
                 onClick={handleNext}
-                className="relative w-full h-full bg-[#140810] rounded-lg border border-[#4D1627] p-6 sm:p-8 shadow-2xl flex flex-col justify-between cursor-pointer group"
+                className="relative w-full min-h-[270px] xs:min-h-[290px] sm:min-h-[320px] bg-[#140810] rounded-lg border border-[#4D1627] p-4.5 xs:p-6 sm:p-8 shadow-2xl flex flex-col justify-between cursor-pointer group active:scale-[0.99]"
                 style={{
                   boxShadow: '0 8px 30px rgba(0, 0, 0, 0.7), inset 0 0 30px rgba(70, 10, 25, 0.2)',
                 }}
@@ -116,40 +116,40 @@ export const ReasonsWall: React.FC = () => {
                 </div>
 
                 {/* Card Header */}
-                <div className="flex justify-between items-center border-b border-dashed border-[#2F0E1B] pb-3">
-                  <span className="font-mono text-xs uppercase tracking-widest text-[#B86276]">
+                <div className="flex justify-between items-center border-b border-dashed border-[#2F0E1B] pb-2 sm:pb-3">
+                  <span className="font-mono text-[10px] xs:text-xs uppercase tracking-widest text-[#B86276]">
                     Reason #{activeReason.number} of 100
                   </span>
-                  <span className="text-[10px] font-mono uppercase bg-[#240B18] px-2 py-0.5 rounded-xs text-[#E0AAB7] border border-[#421425]">
+                  <span className="text-[9px] xs:text-[10px] font-mono uppercase bg-[#240B18] px-2 py-0.5 rounded-xs text-[#E0AAB7] border border-[#421425]">
                     {activeReason.tag}
                   </span>
                 </div>
 
                 {/* Main Reason Text */}
-                <div className="my-auto py-2">
-                  <p className="font-serif text-2xl sm:text-3xl text-[#FCEEF1] leading-snug">
+                <div className="my-auto py-3">
+                  <p className="font-serif text-lg xs:text-xl sm:text-2xl text-[#FCEEF1] leading-snug">
                     “{activeReason.text}”
                   </p>
                 </div>
 
                 {/* Card Footer */}
-                <div className="border-t border-[#2F0E1B] pt-3 flex items-center justify-between text-xs text-[#A86E7E]">
-                  <span className="font-handwriting text-sm text-[#FF8DA5] flex items-center gap-1">
-                    <HeartDoodle size={14} color="#C42340" /> for Mansii
+                <div className="border-t border-[#2F0E1B] pt-2.5 sm:pt-3 flex items-center justify-between text-xs text-[#A86E7E]">
+                  <span className="font-handwriting text-xs xs:text-sm text-[#FF8DA5] flex items-center gap-1">
+                    <HeartDoodle size={13} color="#C42340" /> for Mansii
                   </span>
-                  <span className="font-mono text-[11px] text-[#A86E7E] group-hover:text-[#FFA3B5] transition-colors">
-                    tap card for next reason →
+                  <span className="font-mono text-[10px] xs:text-[11px] text-[#A86E7E] group-hover:text-[#FFA3B5] transition-colors">
+                    tap card for next →
                   </span>
                 </div>
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Interactive Nav Controls */}
-          <div className="mt-8 flex items-center gap-3">
+          {/* Interactive Nav Controls (touch-optimized 44px) */}
+          <div className="mt-6 sm:mt-8 flex items-center gap-3">
             <button
               onClick={handlePrev}
-              className="p-2.5 rounded-full bg-[#180A13] border border-[#421526] text-[#E0B2BE] hover:bg-[#2A0F21] transition-colors cursor-pointer shadow-md"
+              className="min-h-[44px] min-w-[44px] rounded-full bg-[#180A13] border border-[#421526] text-[#E0B2BE] hover:bg-[#2A0F21] active:scale-95 transition-all cursor-pointer shadow-md flex items-center justify-center"
               title="Previous Reason"
               aria-label="Previous reason"
             >
@@ -158,7 +158,7 @@ export const ReasonsWall: React.FC = () => {
 
             <button
               onClick={handleRandom}
-              className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#180A13] border border-[#421526] text-xs font-mono uppercase text-[#E0B2BE] hover:bg-[#2A0F21] transition-colors cursor-pointer shadow-md"
+              className="min-h-[44px] flex items-center gap-1.5 px-4 rounded-full bg-[#180A13] border border-[#421526] text-xs font-mono uppercase text-[#E0B2BE] hover:bg-[#2A0F21] active:scale-95 transition-all cursor-pointer shadow-md"
             >
               <Shuffle className="w-3.5 h-3.5 text-[#C42340]" />
               <span>Surprise Me</span>
@@ -166,7 +166,7 @@ export const ReasonsWall: React.FC = () => {
 
             <button
               onClick={handleNext}
-              className="p-2.5 rounded-full bg-[#780F22] text-[#FFF0F3] border border-[#A6223D] hover:bg-[#8F142A] transition-colors cursor-pointer shadow-lg shadow-[#780F22]/30"
+              className="min-h-[44px] min-w-[44px] rounded-full bg-[#780F22] text-[#FFF0F3] border border-[#A6223D] hover:bg-[#8F142A] active:scale-95 transition-all cursor-pointer shadow-lg shadow-[#780F22]/30 flex items-center justify-center"
               title="Next Reason"
               aria-label="Next reason"
             >
@@ -176,22 +176,22 @@ export const ReasonsWall: React.FC = () => {
         </div>
       ) : (
         /* View Mode: Comprehensive Dark Scrapbook Grid */
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-h-[70vh] overflow-y-auto p-2 pr-4 border border-[#3E1423] rounded-lg bg-[#0F060C]/90">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5 max-h-[70vh] overflow-y-auto overscroll-contain p-2 pr-3 border border-[#3E1423] rounded-lg bg-[#0F060C]/90">
           {filteredReasons.map((item) => (
             <div
               key={item.id}
-              className="p-4 bg-[#140810] rounded-md border border-[#36111F] shadow-md flex flex-col justify-between"
+              className="p-3.5 xs:p-4 bg-[#140810] rounded-md border border-[#36111F] shadow-md flex flex-col justify-between"
             >
               <div>
-                <div className="flex justify-between items-center text-[10px] font-mono text-[#9E6272] mb-2 pb-1 border-b border-[#2A0D18]">
+                <div className="flex justify-between items-center text-[9px] xs:text-[10px] font-mono text-[#9E6272] mb-1.5 pb-1 border-b border-[#2A0D18]">
                   <span>REASON #{item.number}</span>
                   <span className="uppercase">{item.tag}</span>
                 </div>
-                <p className="font-serif text-base text-[#F7E7E9] leading-snug">
+                <p className="font-serif text-sm xs:text-base text-[#F7E7E9] leading-snug">
                   “{item.text}”
                 </p>
               </div>
-              <div className="mt-3 pt-2 text-right text-[11px] font-handwriting text-[#E07A90]">
+              <div className="mt-2.5 pt-1.5 text-right text-[11px] font-handwriting text-[#E07A90]">
                 Aditya ♡
               </div>
             </div>
