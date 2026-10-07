@@ -70,14 +70,8 @@ export const EnvelopeIntro: React.FC<EnvelopeIntroProps> = ({ onOpen }) => {
             Mansiiiii <span className="text-[#C42340] font-handwriting text-2xl xs:text-3xl sm:text-4xl">💗</span>
           </h1>
 
-          <p className="text-xs xs:text-sm sm:text-base text-[#D4B5C1] font-sans pt-0.5 leading-relaxed max-w-xs mx-auto px-1">
-            thoda sa time nikaal ke dekhna…
-            <br />
-            ye wala maine tumhare liye banaya hai 🥹
-          </p>
-
-          <p className="font-handwriting text-[11px] xs:text-xs sm:text-sm text-[#A87282] pt-0.5">
-            (and yes, maine isme unnecessarily bahut time laga diya 😭)
+          <p className="font-handwriting text-base xs:text-lg sm:text-xl text-[#FFB6C6] pt-1 tracking-wide">
+            With love from Aditya ♡
           </p>
         </motion.div>
 
