@@ -107,19 +107,19 @@ export default function App() {
         <HerNameIntro onContinue={() => handleNavigate('tum')} />
 
         {/* Tum & What You Mean To Me */}
-        <TumSection />
+        <TumSection onSecretFound={handleSecretFound} />
 
         {/* Little Things Scrapbook */}
         <LittleThingsScrapbook onSecretFound={handleSecretFound} />
 
         {/* Our Chats */}
-        <ChatWallScrapbook />
+        <ChatWallScrapbook onSecretFound={handleSecretFound} />
 
         {/* Love Letter: Okay… ab seriously */}
-        <LoveLetterSection />
+        <LoveLetterSection onSecretFound={handleSecretFound} />
 
         {/* 100 Little Things */}
-        <ReasonsWall />
+        <ReasonsWall onSecretFound={handleSecretFound} />
 
         {/* Night Section & Future Section */}
         <NightSkySection onSecretFound={handleSecretFound} />

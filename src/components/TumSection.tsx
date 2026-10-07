@@ -1,8 +1,13 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { WashiTape, PressedFlowerSvg, HeartDoodle } from './decorations/ScrapbookDecorations';
+import { HiddenLoveNote } from './HiddenLoveNote';
 
-export const TumSection: React.FC = () => {
+interface TumSectionProps {
+  onSecretFound?: (message: string) => void;
+}
+
+export const TumSection: React.FC<TumSectionProps> = ({ onSecretFound }) => {
   return (
     <section id="tum" className="relative py-14 sm:py-28 px-3.5 sm:px-6 max-w-4xl mx-auto overflow-hidden">
       {/* Background candle illumination */}
@@ -32,8 +37,16 @@ export const TumSection: React.FC = () => {
               Tumhare baare mein…
             </h2>
           </div>
-          <div className="shrink-0 pt-1">
+          <div className="shrink-0 pt-1 flex flex-col items-end">
             <PressedFlowerSvg size={28} className="sm:w-9 sm:h-9" />
+            {onSecretFound && (
+              <HiddenLoveNote
+                label="psst…"
+                message="Don't bite your lips i want to do that"
+                onOpen={onSecretFound}
+                className="-mt-0.5"
+              />
+            )}
           </div>
         </div>
 
@@ -116,13 +129,22 @@ export const TumSection: React.FC = () => {
           <WashiTape variant="wine" rotation="rotate-1" />
         </div>
 
-        <div className="border-b border-[#2B0C18] pb-3 sm:pb-4 mb-5 sm:mb-6">
-          <span className="font-mono text-[9px] xs:text-[10px] uppercase tracking-[0.25em] text-[#B86276]">
-            Chapter III · Meaning
-          </span>
-          <h2 className="font-serif text-2xl xs:text-3xl sm:text-4xl text-[#F9ECE9] font-normal mt-0.5">
-            Tum mere liye kya ho?
-          </h2>
+        <div className="border-b border-[#2B0C18] pb-3 sm:pb-4 mb-5 sm:mb-6 flex justify-between items-end">
+          <div>
+            <span className="font-mono text-[9px] xs:text-[10px] uppercase tracking-[0.25em] text-[#B86276]">
+              Chapter III · Meaning
+            </span>
+            <h2 className="font-serif text-2xl xs:text-3xl sm:text-4xl text-[#F9ECE9] font-normal mt-0.5">
+              Tum mere liye kya ho?
+            </h2>
+          </div>
+          {onSecretFound && (
+            <HiddenLoveNote
+              label="mine"
+              message="Every inch of you is mine"
+              onOpen={onSecretFound}
+            />
+          )}
         </div>
 
         <div className="space-y-4 sm:space-y-5 text-sm xs:text-base sm:text-lg font-serif text-[#DFC8CF] leading-relaxed">

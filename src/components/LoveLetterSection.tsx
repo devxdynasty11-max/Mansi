@@ -1,8 +1,13 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { WashiTape, PressedFlowerSvg, HeartDoodle } from './decorations/ScrapbookDecorations';
+import { HiddenLoveNote } from './HiddenLoveNote';
 
-export const LoveLetterSection: React.FC = () => {
+interface LoveLetterSectionProps {
+  onSecretFound?: (message: string) => void;
+}
+
+export const LoveLetterSection: React.FC<LoveLetterSectionProps> = ({ onSecretFound }) => {
   return (
     <section id="letter" className="relative py-14 sm:py-28 px-3.5 sm:px-6 max-w-4xl mx-auto overflow-hidden">
       {/* Chapter header */}
@@ -47,9 +52,18 @@ export const LoveLetterSection: React.FC = () => {
 
         {/* Letter Heading */}
         <div className="border-b border-[#300E19] pb-4 sm:pb-6 mb-6 sm:mb-8">
-          <div className="flex items-center justify-between text-[10px] xs:text-xs font-mono text-[#9E6272] mb-1.5 sm:mb-2">
+          <div className="flex flex-wrap items-center justify-between gap-1 text-[10px] xs:text-xs font-mono text-[#9E6272] mb-1.5 sm:mb-2">
             <span>PRIVATE & DEEPLY LOVED</span>
-            <span>DATE: ALWAYS</span>
+            <div className="flex items-center gap-2">
+              <span>DATE: ALWAYS</span>
+              {onSecretFound && (
+                <HiddenLoveNote
+                  label="late night thoughts…"
+                  message="Those late night imaginations👀😙"
+                  onOpen={onSecretFound}
+                />
+              )}
+            </div>
           </div>
           <h3 className="font-serif text-2xl xs:text-3xl sm:text-4xl text-[#FFEBF0] italic font-normal">
             Mansii,

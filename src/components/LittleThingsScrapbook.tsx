@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { WashiTape, PressedFlowerSvg, PaperClipSvg, HeartDoodle } from './decorations/ScrapbookDecorations';
+import { HiddenLoveNote } from './HiddenLoveNote';
 
 interface LittleThingsScrapbookProps {
   onSecretFound: (text: string) => void;
@@ -32,9 +33,17 @@ export const LittleThingsScrapbook: React.FC<LittleThingsScrapbookProps> = ({ on
         <h2 className="font-serif text-2xl xs:text-3xl sm:text-5xl text-[#F9ECE9] tracking-tight">
           Tumhari woh chhoti chhoti cheezein…
         </h2>
-        <p className="font-handwriting text-base xs:text-lg sm:text-xl text-[#D89EA9]">
-          (the things that make me fall for you every single day)
-        </p>
+        <div className="flex flex-wrap items-center justify-center gap-1.5 pt-0.5">
+          <p className="font-handwriting text-base xs:text-lg sm:text-xl text-[#D89EA9]">
+            (the things that make me fall for you every single day)
+          </p>
+          <HiddenLoveNote
+            label="midnight craving"
+            message="Every night there is craving of kissing you"
+            onOpen={onSecretFound}
+            className="opacity-75"
+          />
+        </div>
       </div>
 
       {/* Dark Romance Scrapbook Grid */}

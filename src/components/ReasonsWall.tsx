@@ -3,8 +3,13 @@ import { motion, AnimatePresence } from 'motion/react';
 import { REASONS_LIST, ReasonItem } from '../data/reasonsData';
 import { WashiTape, HeartDoodle } from './decorations/ScrapbookDecorations';
 import { Shuffle, ArrowRight, ArrowLeft, Grid, Layers } from 'lucide-react';
+import { HiddenLoveNote } from './HiddenLoveNote';
 
-export const ReasonsWall: React.FC = () => {
+interface ReasonsWallProps {
+  onSecretFound?: (message: string) => void;
+}
+
+export const ReasonsWall: React.FC<ReasonsWallProps> = ({ onSecretFound }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [viewMode, setViewMode] = useState<'stack' | 'grid'>('stack');
   const [selectedTag, setSelectedTag] = useState<string>('all');
@@ -38,9 +43,19 @@ export const ReasonsWall: React.FC = () => {
         <h2 className="font-serif text-2xl xs:text-3xl sm:text-5xl text-[#F9ECE9] tracking-tight">
           100 reasons why I love having you in my life ♡
         </h2>
-        <p className="font-handwriting text-base xs:text-lg sm:text-xl text-[#D89EA9]">
-          (har ek reason sach hai, no exaggeration)
-        </p>
+        <div className="flex flex-wrap items-center justify-center gap-1.5 pt-0.5">
+          <p className="font-handwriting text-base xs:text-lg sm:text-xl text-[#D89EA9]">
+            (har ek reason sach hai, no exaggeration)
+          </p>
+          {onSecretFound && (
+            <HiddenLoveNote
+              label="quick calculation… ✎"
+              message="I may be bad at math but i'll give you value you deserve"
+              onOpen={onSecretFound}
+              className="opacity-75"
+            />
+          )}
+        </div>
       </div>
 
       {/* Control bar: Filters & View mode */}

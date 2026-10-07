@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { WashiTape, PaperClipSvg, HeartDoodle } from './decorations/ScrapbookDecorations';
 import { BookmarkCheck, MessageSquareHeart } from 'lucide-react';
+import { HiddenLoveNote } from './HiddenLoveNote';
 
 interface ChatItem {
   id: string;
@@ -10,6 +11,10 @@ interface ChatItem {
   rotation: string;
   dialogue: Array<{ sender: 'Mansii' | 'Aditya'; text: string; isHighlighted?: boolean }>;
   reflection: string;
+}
+
+interface ChatWallScrapbookProps {
+  onSecretFound?: (message: string) => void;
 }
 
 const CHAT_DATA: ChatItem[] = [
@@ -79,7 +84,7 @@ const CHAT_DATA: ChatItem[] = [
   },
 ];
 
-export const ChatWallScrapbook: React.FC = () => {
+export const ChatWallScrapbook: React.FC<ChatWallScrapbookProps> = ({ onSecretFound }) => {
   const [activeChat, setActiveChat] = useState<ChatItem | null>(null);
 
   return (
@@ -92,9 +97,19 @@ export const ChatWallScrapbook: React.FC = () => {
         <h2 className="font-serif text-2xl xs:text-3xl sm:text-5xl text-[#F9ECE9] tracking-tight">
           Some messages I never want to forget.
         </h2>
-        <p className="font-handwriting text-lg xs:text-xl sm:text-2xl text-[#E892A4]">
-          Normal chats thi tumhare liye shayad… mere liye nahi. ♡
-        </p>
+        <div className="flex flex-wrap items-center justify-center gap-1.5">
+          <p className="font-handwriting text-lg xs:text-xl sm:text-2xl text-[#E892A4]">
+            Normal chats thi tumhare liye shayad… mere liye nahi. ♡
+          </p>
+          {onSecretFound && (
+            <HiddenLoveNote
+              label="can't forget…"
+              message="I can't stop thinking about how good you taste"
+              onOpen={onSecretFound}
+              className="opacity-75"
+            />
+          )}
+        </div>
       </div>
 
       {/* Grid of Scrapbook Chat Artifacts */}

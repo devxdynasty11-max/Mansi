@@ -11,40 +11,45 @@ export const EasterEggToast: React.FC<EasterEggToastProps> = ({ message, onClose
   return (
     <AnimatePresence>
       {message && (
-        <motion.div
-          initial={{ opacity: 0, y: 30, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 20, scale: 0.9 }}
-          className="fixed bottom-4 inset-x-3.5 xs:inset-x-auto xs:right-6 xs:bottom-6 z-50 xs:max-w-xs"
+        <div
+          onClick={onClose}
+          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 cursor-pointer"
         >
-          <div className="relative bg-[#180A12] border border-[#4A1627] p-3.5 xs:p-4 rounded-md shadow-2xl deckled-paper">
-            <div className="absolute -top-2.5 left-6">
-              <WashiTape variant="crimson" rotation="-rotate-2" className="w-16 h-3.5" />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.88, y: 12 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 8 }}
+            transition={{ duration: 0.28, ease: 'easeOut' }}
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-[320px] bg-[#160812] border border-[#52172B] p-5 rounded-lg shadow-2xl deckled-paper text-center select-none cursor-default"
+          >
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+              <WashiTape variant="crimson" rotation="-rotate-1" className="w-20 h-4" />
             </div>
 
-            <div className="flex justify-between items-center mb-0.5">
+            <div className="flex justify-between items-center mb-2 pt-1 border-b border-[#300E19] pb-1.5">
               <span className="font-mono text-[9px] uppercase tracking-wider text-[#B86276]">
-                Secret Note Found
+                secret note for Mansii ♡
               </span>
               <button
                 onClick={onClose}
-                className="min-h-[44px] min-w-[44px] -mr-2 -mt-1 flex items-center justify-end text-[11px] font-mono uppercase text-[#A86E7E] hover:text-[#FFCED8] cursor-pointer"
+                className="min-h-[36px] min-w-[36px] -mr-1 flex items-center justify-end text-[11px] font-mono uppercase text-[#A86E7E] hover:text-[#FFCED8] cursor-pointer"
                 aria-label="Close note"
               >
                 [✕]
               </button>
             </div>
 
-            <p className="font-handwriting text-lg xs:text-xl text-[#FF9EAF] leading-snug my-1.5">
+            <p className="font-handwriting text-xl xs:text-2xl text-[#FFA3B8] leading-snug my-3 px-1">
               “{message}”
             </p>
 
-            <div className="flex items-center justify-between text-[9px] xs:text-[10px] font-mono text-[#A86E7E] pt-1.5 border-t border-dashed border-[#381120]">
-              <span>Aditya's secret note ♡</span>
-              <HeartDoodle size={12} color="#C42340" />
+            <div className="flex items-center justify-between text-[10px] font-mono text-[#A86E7E] pt-2 border-t border-dashed border-[#381120]">
+              <span className="font-handwriting text-sm text-[#E0657C]">from Aditya</span>
+              <HeartDoodle size={14} color="#C42340" />
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       )}
     </AnimatePresence>
   );
