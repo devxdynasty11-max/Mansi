@@ -1,0 +1,8 @@
+{
+  "name": "A Letter to Mansii",
+  "description": "A handcrafted digital love scrapbook, memory museum, and interactive love letter from Aditya for Mansii.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

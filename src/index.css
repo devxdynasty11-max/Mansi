@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-handwriting: 'Caveat', cursive;
+    --font-typewriter: 'Courier Prime', monospace;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-handwriting {
+  font-family: var(--font-handwriting);
+}
+
+.font-typewriter {
+  font-family: var(--font-typewriter);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Pure Dark Romance Paper & Canvas */
+.paper-texture {
+  background-color: #0A0407;
+  background-image: 
+    radial-gradient(rgba(140, 30, 55, 0.12) 1px, transparent 1px),
+    radial-gradient(rgba(30, 15, 22, 0.9) 1px, #0A0407 1px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+/* Dark Vintage Deckled Paper / Parchment */
+.deckled-paper {
+  background: #13090F;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.6),
+    0 12px 36px rgba(100, 15, 30, 0.15),
+    inset 0 0 50px rgba(50, 8, 20, 0.35);
+  border: 1px solid rgba(110, 25, 45, 0.35);
+}
+
+.dark-card {
+  background: #11080D;
+  border: 1px solid rgba(120, 25, 45, 0.3);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Dark Romance Washi Tape */
+.washi-tape {
+  background: rgba(85, 20, 35, 0.55);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  border-left: 2px dashed rgba(160, 40, 65, 0.5);
+  border-right: 2px dashed rgba(160, 40, 65, 0.5);
+}
+
+.washi-tape-crimson {
+  background: rgba(130, 22, 40, 0.65);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  border-left: 2px dashed rgba(200, 50, 75, 0.5);
+  border-right: 2px dashed rgba(200, 50, 75, 0.5);
+}
+
+.washi-tape-charcoal {
+  background: rgba(35, 25, 30, 0.75);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  border-left: 2px dashed rgba(90, 60, 70, 0.5);
+  border-right: 2px dashed rgba(90, 60, 70, 0.5);
+}
+
+/* Smooth custom scrollbar for dark romance */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0407;
+}
+::-webkit-scrollbar-thumb {
+  background: #4A1220;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7A1D32;
+}
+
+/* Candlelight / Ember pulse animation */
+@keyframes candleFlicker {
+  0%, 100% {
+    opacity: 0.9;
+    filter: drop-shadow(0 0 12px rgba(230, 160, 90, 0.35));
+  }
+  50% {
+    opacity: 0.75;
+    filter: drop-shadow(0 0 18px rgba(210, 80, 70, 0.45));
+  }
+}
+
+.animate-candle {
+  animation: candleFlicker 4s ease-in-out infinite;
+}
+
+/* Floating dark rose petal keyframes */
+@keyframes floatRosePetal {
+  0% {
+    transform: translateY(0px) rotate(0deg) scale(0.9);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  85% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-80px) rotate(35deg) scale(1.05);
+    opacity: 0;
+  }
+}
+
+.animate-petal {
+  animation: floatRosePetal 8s ease-in-out infinite;
+}
